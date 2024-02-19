@@ -129,7 +129,16 @@ new Vue({
             card.lastEdited = new Date().toLocaleString();
             this.completedTasks.push(card); // Добавление задачи в массив выполненных задач
         },
+        returnToProgress(card) {
+            // Возврат задачи в статус "В процессе выполнения"
+            const reason = prompt('Введите причину возврата', '');
+
+            if (reason) {
+                this.testingTasks.splice(this.testingTasks.indexOf(card), 1); // Удаление задачи из массива задач на тестировании
+                card.lastEdited = new Date().toLocaleString();
+                card.returnReason = reason;
+                this.inProgressTasks.push(card); // Добавление задачи в массив задач в процессе выполнения
+            }
+        },
     },
-
-
 })
