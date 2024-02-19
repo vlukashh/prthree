@@ -84,6 +84,25 @@ new Vue({
             this.plannedTasks.push(newCard); // Добавление новой задачи в массив запланированных задач
             this.clearForm(); // Очистка формы
         },
+        checkYear() {
+            const enteredYear = this.newCardDeadline.slice(0, 4); // Получение первых четырех символов
+
+            if (enteredYear.length !== 4) {
+                // Вывести сообщение об ошибке или предпринять другие действия
+                console.log('Ошибка! Год должен состоять из четырех цифр.');
+            }
+        },
+        editCard(card) {
+            // Редактирование задачи
+            const newTitle = prompt('Введите новый заголовок', card.title); // Запрос нового заголовка
+            const newDescription = prompt('Введите новое описание', card.description); // Запрос нового описания
+
+            if (newTitle && newDescription) {
+                card.title = newTitle;
+                card.description = newDescription;
+                card.lastEdited = new Date().toLocaleString();
+            }
+        },
     },
 
 
