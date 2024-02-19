@@ -140,5 +140,32 @@ new Vue({
                 this.inProgressTasks.push(card); // Добавление задачи в массив задач в процессе выполнения
             }
         },
-    },
+        isDeadlineExpired(deadline) {
+            // Проверка истек ли срок выполнения задачи
+            const currentDate = new Date();
+            const deadlineDate = new Date(deadline);
+
+            return currentDate > deadlineDate;
+        },
+        clearForm() {
+            // Очистка формы
+            this.newCardTitle = '';
+            this.newCardDescription = '';
+            this.newCardDeadline = '';
+        },
+        findColumn(card) {
+            // Поиск массива, в котором находится задача
+            if (this.plannedTasks.includes(card)) {
+                return this.plannedTasks; // Задача находится в массиве запланированных задач
+            } else if (this.inProgressTasks.includes(card)) {
+                return this.inProgressTasks; // Задача находится в массиве задач в процессе выполнения
+            } else if (this.testingTasks.includes(card)) {
+                return this.testingTasks; // Задача находится в массиве задач на тестировании
+            } else if (this.completedTasks.includes(card)) {
+                return this.completedTasks; // Задача находится в массиве выполненных задач
+            } else {
+                return null; // Задача не найдена в массивах
+            }
+        },
+    }
 })
