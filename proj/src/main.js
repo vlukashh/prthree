@@ -117,6 +117,12 @@ new Vue({
             card.lastEdited = new Date().toLocaleString();
             this.inProgressTasks.push(card); // Добавление задачи в массив задач в процессе выполнения
         },
+        moveToTesting(card) {
+            // Перемещение задачи в статус "На тестировании"
+            this.inProgressTasks.splice(this.inProgressTasks.indexOf(card), 1); // Удаление задачи из массива задач в процессе выполнения
+            card.lastEdited = new Date().toLocaleString();
+            this.testingTasks.push(card); // Добавление задачи в массив задач на тестировании
+        },
     },
 
 
