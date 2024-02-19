@@ -1,35 +1,79 @@
-@import './base.css';
-
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  font-weight: normal;
+.board {
+  display: flex;
+  justify-content: space-between;
 }
 
-a,
-.green {
-  text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
-  transition: 0.4s;
-  padding: 3px;
+.column h2{
+  text-align: center;
+}
+.column {
+  flex: 1 1 25%;
+  padding: 20px;
+  background-color: #ead9db;
+  border-radius: 5px;
+  margin: 10px;
 }
 
-@media (hover: hover) {
-  a:hover {
-    background-color: hsla(160, 100%, 37%, 0.2);
-  }
+.card {
+  background-color: #fff;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-@media (min-width: 1024px) {
-  body {
-    display: flex;
-    place-items: center;
-  }
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  gap: 5px;
+}
 
-  #app {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0 2rem;
-  }
+.timestamp {
+  font-size: 12px;
+  color: #999;
+}
+
+.card-content {
+  margin-bottom: 10px;
+}
+
+.card-content p {
+  margin: 0;
+}
+
+.card-content p + p {
+  margin-top: 5px;
+}
+
+
+.expired {
+  color: red;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: none;
+}
+
+button {
+  padding: 10px;
+  background-color: #e89ba4;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  margin: 2px;
+}
+
+button:hover {
+  background-color: #e89ba4;
 }
