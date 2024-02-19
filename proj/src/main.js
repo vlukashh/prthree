@@ -103,6 +103,20 @@ new Vue({
                 card.lastEdited = new Date().toLocaleString();
             }
         },
+        deleteCard(card) {
+            // Удаление задачи
+            const column = this.findColumn(card);
+
+            if (column) {
+                column.splice(column.indexOf(card), 1); // Удаление задачи из соответствующего массива
+            }
+        },
+        moveToInProgress(card) {
+            // Перемещение задачи в статус "В процессе выполнения"
+            this.plannedTasks.splice(this.plannedTasks.indexOf(card), 1); // Удаление задачи из массива запланированных задач
+            card.lastEdited = new Date().toLocaleString();
+            this.inProgressTasks.push(card); // Добавление задачи в массив задач в процессе выполнения
+        },
     },
 
 
