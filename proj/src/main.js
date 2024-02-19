@@ -123,6 +123,12 @@ new Vue({
             card.lastEdited = new Date().toLocaleString();
             this.testingTasks.push(card); // Добавление задачи в массив задач на тестировании
         },
+        moveToCompleted(card) {
+            // Перемещение задачи в статус "Выполнено"
+            this.testingTasks.splice(this.testingTasks.indexOf(card), 1); // Удаление задачи из массива задач на тестировании
+            card.lastEdited = new Date().toLocaleString();
+            this.completedTasks.push(card); // Добавление задачи в массив выполненных задач
+        },
     },
 
 
