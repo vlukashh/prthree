@@ -62,6 +62,29 @@ new Vue({
                 this.testingTasks = tasks.testingTasks || [];
                 this.completedTasks = tasks.completedTasks || [];
             }
-        }
-    }
+        },
+        addCard() {
+            const currentDateTime = new Date();
+            const enteredDeadline = new Date(this.newCardDeadline);
+
+            if (enteredDeadline < currentDateTime) {
+                console.log('Ошибка! Вы выбрали прошедшую дату в качестве дедлайна.');
+                return; // Прекращаем выполнение метода, если выбрана прошедшая дата
+            }
+            // Добавление новой задачи
+            const newCard = {
+                id: Date.now(),
+                title: this.newCardTitle,
+                description: this.newCardDescription,
+                deadline: this.newCardDeadline,
+                lastEdited: new Date().toLocaleString(),
+                returnReason: ''
+            };
+
+            this.plannedTasks.push(newCard); // Добавление новой задачи в массив запланированных задач
+            this.clearForm(); // Очистка формы
+        },
+    },
+
+
 })
