@@ -41,6 +41,13 @@ new Vue({
         },
     },
     methods: {
+        openModal() {
+            document.getElementById('addTaskModal').style.display = 'block';
+        },
+        // Закрытие модального окна
+        closeModal() {
+            document.getElementById('addTaskModal').style.display = 'none';
+        },
         saveTasksToStorage() {
             const tasks = {
                 plannedTasks: this.plannedTasks,

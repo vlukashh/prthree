@@ -30,12 +30,19 @@
                       <button @click="moveToInProgress(card)">Переместить в работу</button>
                   </div>
               </div>
-              <form @submit.prevent="addCard"> <!-- Форма для создания новой карточки -->
-                  <input v-model="newCardTitle" placeholder="Заголовок" required>
-                  <input v-model="newCardDescription" placeholder="Описание" required>
-                  <input type="date" v-model="newCardDeadline" @change="checkYear" required>
-                  <button type="submit">Создать карточку</button>
-              </form>
+              <button class="btnopen" @click="openModal()">Создать задачу </button>
+              <div id="addTaskModal" class="modal">
+                  <div class="modal-content">
+                      <span class="close" @click="closeModal">&times;</span>
+                      <h2>Создать задачу</h2>
+                      <form @submit.prevent="addCard">
+                          <input v-model="newCardTitle" placeholder="Заголовок" required>
+                          <input v-model="newCardDescription" placeholder="Описание" required>
+                          <input type="date" v-model="newCardDeadline" @change="checkYear" required>
+                          <button type="submit">Создать карточку</button>
+                      </form>
+                  </div>
+              </div>
           </div>
 
           <div class="column">
